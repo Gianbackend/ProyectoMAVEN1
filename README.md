@@ -17,4 +17,49 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 ---
 
 ## ⚙️ Estructura del Proyecto
+📁 PROYECTO_MAVEN1
+├── 📁 src
+│ ├── 📁 main
+│ │ ├── 📁 java/org/example
+│ │ │ ├── 📁 servlet → Controladores del flujo del juego
+│ │ │ └── 📁 logic → Lógica principal del árbol de decisiones
+│ │ ├── 📁 resources
+│ │ └── 📁 webapp
+│ │ ├── 📁 assets → imágenes, sonidos y estilos
+│ │ ├── 📁 WEB-INF → web.xml (configuración del proyecto)
+│ │ └── 📄 index.jsp y demás escenas (.jsp)
+│ └── 📁 test → Pruebas unitarias con JUnit
+├── 📄 pom.xml → Dependencias y configuración Maven
+└── 📄 .gitignore
+
+
+---
+
+## 🧠 Lógica del Juego
+
+Cada decisión del jugador genera una ruta diferente.  
+El flujo se gestiona con la clase `GameLogic.java`, que mapea elecciones a escenas JSP.  
+Las escenas finales detienen la historia y reproducen un audio distinto.
+
+---
+
+## 🎨 Diseño
+
+- Cada escena utiliza un fondo distinto (`assets/images/scene-*.jpg`).
+- Los estilos están centralizados en `style.css`.
+- La música cambia entre portada, trama y finales (`assets/sounds`).
+
+---
+
+## 🧪 Pruebas Unitarias
+
+El archivo `GameLogicTest.java` valida:
+- Transiciones correctas entre decisiones.
+- Identificación de escenas finales.
+- Manejo de errores por decisiones no válidas.
+
+Ejecución:
+```bash
+mvn test
+
 
