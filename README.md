@@ -3,6 +3,10 @@
 Un juego narrativo web basado en el anime **Death Note**, desarrollado con **Java EE (Servlets + JSP)** y desplegado en **Apache Tomcat 9**.  
 El jugador toma decisiones que lo llevan a distintos finales, en un árbol de decisiones inspirado en la historia original.
 
+🔗 Acceso en línea: 👉 https://proyectodeathnote.onrender.com/
+
+🕒 El servidor puede tardar unos segundos en iniciar. Espere a que la página cargue completamente.👍
+
 ---
 
 ## 🚀 Tecnologías Utilizadas
@@ -203,10 +207,10 @@ target
 
 ☁️ Despliegue en Render
 
-El proyecto está desplegado en Render, utilizando un contenedor Docker multietapa que compila el .war con Maven y lo ejecuta con Tomcat 9 + JDK 17.
+El proyecto está desplegado en Render, utilizando un contenedor Docker 
+multietapa que compila el .war con Maven y lo ejecuta con Tomcat 9 + JDK 17.
 
-🔗 Acceso en línea:
-👉 https://proyectdeathnote.onrender.com/
+🔗 Acceso en línea: 👉 https://proyectodeathnote.onrender.com/
 
 🔹 Proceso de despliegue
 
