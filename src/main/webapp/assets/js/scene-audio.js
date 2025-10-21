@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let src;
     let startMuted = false;
 
-    // Detectar la escena actual y el tipo de música
+    // Detectar la escena actual y elegir la música
     if (c.contains("scene-index")) {
         src = `${window.location.origin}/${window.location.pathname.split("/")[1]}/assets/sounds/portada.mp3`;
-        startMuted = true; // solo la portada empieza silenciada
+        startMuted = true; // la portada empieza silenciada
     } else if (
         c.contains("scene-erase") ||
         c.contains("scene-surrender") ||
@@ -20,24 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
         src = `${window.location.origin}/${window.location.pathname.split("/")[1]}/assets/sounds/trama.mp3`;
     }
 
-    // Crear audio
+    // Crear elemento de audio
     const audio = new Audio(src);
     audio.loop = true;
     audio.volume = 0.4;
     audio.preload = "auto";
-    audio.load();
 
-    // Si es la portada, precarga en mute
-    if (startMuted) {
+    // Verificar si el usuario ya dio permiso antes (sessionStorage)
+    const audioEnabled = sessionStorage.getItem("audioEnabled") === "true";
+
+    // Configurar mute inicial según el contexto
+    if (startMuted && !audioEnabled) {
         audio.muted = true;
     } else {
-        // En las demás escenas, reproducir automáticamente
-        audio.play().catch(() => console.warn("Autoplay bloqueado, requerirá interacción."));
+        audio.muted = false;
+        audio.play().catch(() => console.warn("Autoplay bloqueado hasta interacción."));
     }
 
-    // Crear botón
+    // Crear botón de sonido
     const btn = document.createElement("button");
-    btn.textContent = startMuted ? "🔇" : "🔊";
+    btn.textContent = audio.muted ? "🔇" : "🔊";
     btn.classList.add("sound-toggle");
     Object.assign(btn.style, {
         position: "fixed",
@@ -53,18 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
         color: "#fff",
     });
 
-    // Click para alternar sonido
+    // Controlar el mute/desmute y guardar estado global
     btn.addEventListener("click", () => {
         if (audio.muted) {
-            audio.play().then(() => {
-                audio.muted = false;
-                btn.textContent = "🔊";
-            }).catch(() => console.warn("Reproducción bloqueada hasta interacción."));
+            audio.muted = false;
+            audio.play().catch(() => console.warn("Reproducción bloqueada hasta interacción."));
+            btn.textContent = "🔊";
+            sessionStorage.setItem("audioEnabled", "true");
         } else {
             audio.muted = true;
+            audio.pause();
             btn.textContent = "🔇";
+            sessionStorage.setItem("audioEnabled", "false");
         }
     });
 
+    // Agregar el botón al documento
     document.body.appendChild(btn);
 });
