@@ -5,6 +5,8 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 
 🔗 Acceso en línea: 👉 https://proyectodeathnote.onrender.com/
 
+🕒 *El servidor puede tardar unos segundos en iniciar. Espere a que la página cargue completamente.*
+
 ---
 
 ## 🚀 Tecnologías Utilizadas
