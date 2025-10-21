@@ -121,6 +121,10 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 
 ├── 📄 pom.xml                                      # Dependencias y build Maven
 
+├── 📄 Dockerfile                                      # Compilar y desplegar la app Java (WAR) con Tomcat 9 y JDK 17.
+
+├── 📄 .dockerignore                                      # Excluye carpetas innecesarias (target, .idea, .git, etc.)
+
 ├── 📄 .gitignore                                   # Ignorar carpetas y archivos de build
 
 └── 📄 README.md                                    # Documentación general del proyecto
@@ -196,6 +200,32 @@ target
 .git
 *.iml
 
-🚀 Despliegue
 
-Render usa este Dockerfile para construir el WAR y desplegarlo automáticamente en el puerto 8080.
+☁️ Despliegue en Render
+
+El proyecto está desplegado en Render, utilizando un contenedor Docker multietapa que compila el .war con Maven y lo ejecuta con Tomcat 9 + JDK 17.
+
+🔗 Acceso en línea:
+👉 https://proyectdeathnote.onrender.com/
+
+🔹 Proceso de despliegue
+
+Se sube el proyecto a GitHub.
+
+Render detecta automáticamente el Dockerfile.
+
+Durante el build:
+
+Etapa 1: compila el proyecto Java con Maven (mvn clean package).
+
+Etapa 2: copia el .war resultante en Tomcat y ejecuta catalina.sh run.
+
+La aplicación se expone en el puerto 8080 (Render la publica vía HTTPS).
+
+🔹 Archivos relevantes
+
+Dockerfile: define la imagen y las etapas del build.
+
+.dockerignore: excluye carpetas innecesarias (target, .idea, .git, etc.).
+
+pom.xml: define dependencias y empaquetado WAR.
