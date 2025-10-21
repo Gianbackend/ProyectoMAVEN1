@@ -19,18 +19,37 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 ## ⚙️ Estructura del Proyecto
 📁 PROYECTO_MAVEN1
 ├── 📁 src
-│ ├── 📁 main
-│ │ ├── 📁 java/org/example
-│ │ │ ├── 📁 servlet → Controladores del flujo del juego
-│ │ │ └── 📁 logic → Lógica principal del árbol de decisiones
-│ │ ├── 📁 resources
-│ │ └── 📁 webapp
-│ │ ├── 📁 assets → imágenes, sonidos y estilos
-│ │ ├── 📁 WEB-INF → web.xml (configuración del proyecto)
-│ │ └── 📄 index.jsp y demás escenas (.jsp)
-│ └── 📁 test → Pruebas unitarias con JUnit
-├── 📄 pom.xml → Dependencias y configuración Maven
-└── 📄 .gitignore
+│   ├── 📁 main
+│   │   ├── 📁 java
+│   │   │   └── 📁 org
+│   │   │       └── 📁 example
+│   │   │           ├── 📁 servlet        → Controladores del flujo del juego
+│   │   │           │   ├── GameServlet.java
+│   │   │           │   └── Main.java
+│   │   │           └── 📁 logic          → Lógica principal del árbol de decisiones
+│   │   │               ├── GameLogic.java
+│   │   │               ├── Animal.java
+│   │   │               ├── Herbivoro.java
+│   │   │               ├── Carnivoro.java
+│   │   │               ├── Species.java
+│   │   │               └── Lobo.java
+│   │   ├── 📁 resources
+│   │   │   └── config.properties         → Configuración adicional del juego
+│   │   └── 📁 webapp
+│   │       ├── 📁 assets                 → Imágenes, sonidos y estilos
+│   │       │   ├── style.css
+│   │       │   ├── logo.png
+│   │       │   └── click.wav
+│   │       ├── 📁 WEB-INF
+│   │       │   └── web.xml              → Configuración del proyecto
+│   │       ├── index.jsp                → Página principal
+│   │       ├── escena1.jsp              → Primera escena del juego
+│   │       └── escena2.jsp              → Segunda escena del juego
+│   └── 📁 test
+│       └── 📁 org.example.logic
+│           └── GameLogicTest.java      → Pruebas unitarias con JUnit
+├── 📄 pom.xml                           → Dependencias y configuración Maven
+└── 📄 .gitignore                        → Exclusiones para control de versiones
 
 
 ---
