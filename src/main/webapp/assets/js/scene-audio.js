@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let src;
     let startMuted = false;
 
-    // 🔹 Detectar escena actual
-    if (c.contains("scene-index")) {
+        if (c.contains("scene-index")) {
         src = `${window.location.origin}/assets/sounds/portada.mp3`;
         startMuted = true; // Solo la portada empieza silenciada
     } else if (
@@ -20,14 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
         src = `${window.location.origin}/assets/sounds/trama.mp3`;
     }
 
-    // 🎵 Crear elemento de audio
     const audio = new Audio(src);
     audio.loop = true;
     audio.volume = 0.4;
     audio.preload = "auto";
     audio.load();
 
-    // Portada inicia muteada
+
     if (startMuted) {
         audio.muted = true;
     } else {
@@ -35,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.play().catch(() => console.warn("Autoplay bloqueado, esperará interacción."));
     }
 
-    // 🔈 Crear botón de sonido
     const btn = document.createElement("button");
     btn.textContent = startMuted ? "🔇" : "🔊";
     btn.classList.add("sound-toggle");
@@ -53,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         color: "#fff",
     });
 
-    // 🖱️ Al hacer clic: alternar mute o iniciar reproducción
-    btn.addEventListener("click", () => {
+        btn.addEventListener("click", () => {
         if (audio.muted || audio.paused) {
             audio.muted = false;
             audio.play().then(() => {
@@ -69,8 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 🔁 Mantener estado entre escenas
-    const saved = localStorage.getItem("soundEnabled");
+        const saved = localStorage.getItem("soundEnabled");
     if (saved === "true" && !startMuted) {
         audio.muted = false;
         audio.play().catch(() => {});
