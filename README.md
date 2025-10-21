@@ -175,3 +175,27 @@ Abrir en el navegador:
 
 http://localhost:8080/proyecto-deathnote/
 
+🐋 Docker
+
+El proyecto usa Docker para compilar y desplegar la app Java (WAR) con Tomcat 9 y JDK 17.
+
+🔹 Versión final (multietapa)
+
+Se usa un Dockerfile con dos etapas:
+
+Build: compila el proyecto con Maven dentro del contenedor.
+
+Run: copia el .war generado a una imagen limpia de Tomcat y lo ejecuta.
+
+.dockerignore
+
+Para optimizar el build, se excluyen carpetas y archivos innecesarios:
+
+target
+.idea
+.git
+*.iml
+
+🚀 Despliegue
+
+Render usa este Dockerfile para construir el WAR y desplegarlo automáticamente en el puerto 8080.
