@@ -5,8 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let src;
     let startMuted = false;
 
+    // 🔹 Detectar context path dinámico (local y en Render)
+    const pathParts = window.location.pathname.split("/");
+    const contextPath = pathParts.length > 1 ? `/${pathParts[1]}` : "";
+
         if (c.contains("scene-index")) {
-        src = `${window.location.origin}/assets/sounds/portada.mp3`;
+        src = `${window.location.origin}${contextPath}/assets/sounds/portada.mp3`;
         startMuted = true; // Solo la portada empieza silenciada
     } else if (
         c.contains("scene-erase") ||
@@ -14,10 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
         c.contains("scene-reject") ||
         c.contains("scene-manipulate")
     ) {
-        src = `${window.location.origin}/assets/sounds/final.mp3`;
+        src = `${window.location.origin}${contextPath}/assets/sounds/final.mp3`;
     } else {
-        src = `${window.location.origin}/assets/sounds/trama.mp3`;
+        src = `${window.location.origin}${contextPath}/assets/sounds/trama.mp3`;
     }
+
 
     const audio = new Audio(src);
     audio.loop = true;
@@ -29,9 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (startMuted) {
         audio.muted = true;
     } else {
-        // Otras escenas: intentan reproducir sin interacción
+        // En las demás escenas, intenta reproducir automáticamente
         audio.play().catch(() => console.warn("Autoplay bloqueado, esperará interacción."));
     }
+
 
     const btn = document.createElement("button");
     btn.textContent = startMuted ? "🔇" : "🔊";
@@ -50,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
         color: "#fff",
     });
 
-        btn.addEventListener("click", () => {
+
+    btn.addEventListener("click", () => {
         if (audio.muted || audio.paused) {
             audio.muted = false;
             audio.play().then(() => {
@@ -65,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-        const saved = localStorage.getItem("soundEnabled");
+
+    const saved = localStorage.getItem("soundEnabled");
     if (saved === "true" && !startMuted) {
         audio.muted = false;
         audio.play().catch(() => {});
