@@ -205,8 +205,8 @@ target
 
 El proyecto está desplegado en Render, utilizando un contenedor Docker multietapa que compila el .war con Maven y lo ejecuta con Tomcat 9 + JDK 17.
 
-🔗 Acceso en línea:
-👉 **https://proyecotdeathnote.onrender.com/**
+<h2>🔗 Acceso en línea: 👉 <a href="https://proyecotdeathnote.onrender.com/" target="_blank">https://proyecotdeathnote.onrender.com/</a></h2>
+
 
 🔹 Proceso de despliegue
 
