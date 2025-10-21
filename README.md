@@ -2,7 +2,7 @@
 
 Un juego narrativo web basado en el anime **Death Note**, desarrollado con **Java EE (Servlets + JSP)** y desplegado en **Apache Tomcat 9**.  
 El jugador toma decisiones que lo llevan a distintos finales, en un árbol de decisiones inspirado en la historia original.
-🔗 Acceso en línea: 👉 https://proyecotdeathnote.onrender.com/
+
 ---
 
 ## 🚀 Tecnologías Utilizadas
