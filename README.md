@@ -19,10 +19,15 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 ## ⚙️ Estructura del Proyecto
 📁 PROYECTO_MAVEN1
 ├── 📁 src
+
 │   ├── 📁 main
+
 │   │   ├── 📁 java
+
 │   │   │   └── 📁 org
+
 │   │   │       └── 📁 example
+
 │   │   │           ├── 📁 servlet        → Controladores del flujo del juego
 │   │   │           │   ├── GameServlet.java
 │   │   │           │   └── Main.java
@@ -81,4 +86,24 @@ Ejecución:
 ```bash
 mvn test
 
+▶️ Ejecución Local
+
+Empaquetar el proyecto:
+
+mvn clean package
+
+
+Copiar el archivo .war generado en target/ a:
+
+C:\tomcat\webapps\
+
+
+Iniciar Tomcat:
+
+startup.bat
+
+
+Abrir en el navegador:
+
+http://localhost:8080/proyecto-deathnote/
 
