@@ -1,0 +1,155 @@
+/* --- General --- */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #fff;
+    background-color: #000;
+    position: relative;
+}
+
+/* --- Fondo general  --- */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(60%);
+    z-index: 0;
+    transition: background-image 1s ease-in-out;
+}
+
+/* --- Cuadro de diálogo --- */
+.scene-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* negro translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px 30px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+    animation: fadeIn 1.5s ease;
+}
+
+/* --- Texto --- */
+h2, p {
+    margin: 10px 0;
+}
+
+/* --- Botones --- */
+button {
+    background-color: #d32f2f;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+/* --- Animación de aparición --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   FONDOS POR ESCENA
+   ============================ */
+
+/* Escena de portada (index.jsp) */
+.scene-index::before {
+    background-image: url("../images/index.jpg");
+}
+/* Escena inicial */
+.scene-start::before {
+    background-image: url("../images/start.jpg");
+}
+
+/* Escena: Usarlo */
+.scene-use::before {
+    background-image: url("../images/use.jpg");
+}
+
+/* Escena: Destruirlo */
+.scene-destroy::before {
+    background-image: url("../images/destroy.jpg");
+}
+
+/* Escena: Esconderlo */
+.scene-hide::before {
+    background-image: url("../images/hide.jpg");
+}
+
+/* Escena: Mostrarlo */
+.scene-show::before {
+    background-image: url("../images/show.jpg");
+}
+
+/* Escena: Confrontar */
+.scene-confront::before {
+    background-image: url("../images/confront.jpg");
+}
+
+/* Escena: Negar */
+.scene-deny::before {
+    background-image: url("../images/deny.jpg");
+}
+
+/* Escena: Borrar evidencias */
+.scene-erase::before {
+    background-image: url("../images/erase.jpg");
+}
+
+/* Escena: Entregarte */
+.scene-surrender::before {
+    background-image: url("../images/surrender.jpg");
+}
+
+/* Escena: Manipular */
+.scene-manipulate::before {
+    background-image: url("../images/manipulate.jpg");
+}
+
+/* Escena: Aceptar destino */
+.scene-accept::before {
+    background-image: url("../images/accept.jpg");
+}
+
+/* Escena: Negociar con Ryuk */
+.scene-negotiate::before {
+    background-image: url("../images/negotiate.jpg");
+}
+
+/* Escena: Rechazar trato */
+.scene-reject::before {
+    background-image: url("../images/reject.jpg");
+}
+
+/* Escena de error */
+.scene-error::before {
+    background-image: url("../images/error.jpg");
+}
+.sound-toggle:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
+  background: rgba(255, 255, 255, 0.15);
+}
