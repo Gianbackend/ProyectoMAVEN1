@@ -17,7 +17,8 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 ---
 
 ## ⚙️ Estructura del Proyecto
-📁 proyecto-deathnote
+📁 proyecto-Maven
+
 ├── 📁 .idea/                            # Configuración interna de IntelliJ
 
 ├── 📁 src
