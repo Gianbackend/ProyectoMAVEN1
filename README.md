@@ -17,7 +17,9 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 ---
 
 ## ⚙️ Estructura del Proyecto
-📁 PROYECTO_MAVEN1
+📁 proyecto-deathnote
+├── 📁 .idea/                            # Configuración interna de IntelliJ
+
 ├── 📁 src
 
 │   ├── 📁 main
@@ -28,34 +30,99 @@ El jugador toma decisiones que lo llevan a distintos finales, en un árbol de de
 
 │   │   │       └── 📁 example
 
-│   │   │           ├── 📁 servlet        → Controladores del flujo del juego
-│   │   │           │   ├── GameServlet.java
-│   │   │           │   └── Main.java
-│   │   │           └── 📁 logic          → Lógica principal del árbol de decisiones
-│   │   │               ├── GameLogic.java
-│   │   │               ├── Animal.java
-│   │   │               ├── Herbivoro.java
-│   │   │               ├── Carnivoro.java
-│   │   │               ├── Species.java
-│   │   │               └── Lobo.java
-│   │   ├── 📁 resources
-│   │   │   └── config.properties         → Configuración adicional del juego
-│   │   └── 📁 webapp
-│   │       ├── 📁 assets                 → Imágenes, sonidos y estilos
-│   │       │   ├── style.css
-│   │       │   ├── logo.png
-│   │       │   └── click.wav
-│   │       ├── 📁 WEB-INF
-│   │       │   └── web.xml              → Configuración del proyecto
-│   │       ├── index.jsp                → Página principal
-│   │       ├── escena1.jsp              → Primera escena del juego
-│   │       └── escena2.jsp              → Segunda escena del juego
-│   └── 📁 test
-│       └── 📁 org.example.logic
-│           └── GameLogicTest.java      → Pruebas unitarias con JUnit
-├── 📄 pom.xml                           → Dependencias y configuración Maven
-└── 📄 .gitignore                        → Exclusiones para control de versiones
+│   │   │           ├── 📁 servlet
 
+│   │   │           │   ├── MainServlet.java          # Controlador principal: inicia y redirige escenas
+
+│   │   │           │   ├── GameServlet.java          # (Opcional) controlador para flujo extendido
+
+│   │   │           └── 📁 logic
+
+│   │   │               ├── GameLogic.java            # Lógica del árbol de decisiones
+
+│   │   ├── 📁 resources
+
+│   │   └── 📁 webapp
+
+│   │       ├── 📁 WEB-INF
+
+│   │       │   └── web.xml                          # Descriptor del despliegue (servlets y rutas)
+
+│   │       ├── 📁 assets
+
+│   │       │   ├── 📁 css
+
+│   │       │   │   └── style.css                    # Estilos globales de todas las escenas
+
+│   │       │   ├── 📁 js
+
+│   │       │   │   └── scene-audio.js               # Controlador de música por escena
+
+│   │       │   ├── 📁 images                        # Fondos de cada escena
+
+│   │       │   │   ├── scene-index.jpg
+
+│   │       │   │   ├── start.jpg
+
+│   │       │   │   ├── use.jpg
+
+│   │       │   │   ├── destroy.jpg
+
+│   │       │   │   ├── show.jpg
+
+│   │       │   │   ├── hide.jpg
+
+│   │       │   │   ├── surrender.jpg
+
+│   │       │   │   ├── reject.jpg
+
+│   │       │   │   └── manipulate.jpg
+
+│   │       │   └── 📁 sounds                        # Audios del juego
+
+│   │       │       ├── portada.mp3
+
+│   │       │       ├── trama.mp3
+
+│   │       │       └── final.mp3
+
+│   │       ├── 📄 index.jsp                         # Portada principal del juego
+
+│   │       ├── 📄 start.jsp                         # Primer punto de decisión
+
+│   │       ├── 📄 use.jsp                           # Rama “usar el Death Note”
+
+│   │       ├── 📄 destroy.jsp                       # Rama “destruirlo”
+
+│   │       ├── 📄 hide.jsp                          # Rama “esconderlo”
+
+│   │       ├── 📄 show.jsp                          # Rama “mostrarlo”
+
+│   │       ├── 📄 surrender.jsp                     # Final: entregarte
+
+│   │       ├── 📄 reject.jsp                        # Final: rechazar el trato
+
+│   │       ├── 📄 manipulate.jsp                    # Final: manipular la situación
+
+│   │       └── 📄 error.jsp                         # Escena genérica de error
+
+│   └── 📁 test
+
+│       └── 📁 java
+
+│           └── 📁 org
+
+│               └── 📁 example
+
+│                   └── 📁 logic
+
+│                       └── GameLogicTest.java       # Pruebas unitarias con JUnit 5
+
+├── 📄 pom.xml                                      # Dependencias y build Maven
+
+├── 📄 .gitignore                                   # Ignorar carpetas y archivos de build
+
+└── 📄 README.md                                    # Documentación general del proyecto
 
 ---
 
