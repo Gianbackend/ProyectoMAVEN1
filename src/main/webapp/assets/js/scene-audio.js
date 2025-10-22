@@ -5,22 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let src;
     let startMuted = false;
 
-    // 🔹 Detectar context path dinámico (local y en Render)
-    const pathParts = window.location.pathname.split("/");
-    const contextPath = pathParts.length > 1 ? `/${pathParts[1]}` : "";
+        const pathname = window.location.pathname;
+    const parts = pathname.split("/").filter(Boolean);
+    const isLocal = parts.length > 0 && parts[0] === "proyecto-deathnote";
+    const basePath = isLocal ? `/${parts[0]}` : "";
 
         if (c.contains("scene-index")) {
-        src = `${window.location.origin}${contextPath}/assets/sounds/portada.mp3`;
-        startMuted = true; // Solo la portada empieza silenciada
+        src = `${window.location.origin}${basePath}/assets/sounds/portada.mp3`;
+        startMuted = true;
     } else if (
         c.contains("scene-erase") ||
         c.contains("scene-surrender") ||
         c.contains("scene-reject") ||
         c.contains("scene-manipulate")
     ) {
-        src = `${window.location.origin}${contextPath}/assets/sounds/final.mp3`;
+        src = `${window.location.origin}${basePath}/assets/sounds/final.mp3`;
     } else {
-        src = `${window.location.origin}${contextPath}/assets/sounds/trama.mp3`;
+        src = `${window.location.origin}${basePath}/assets/sounds/trama.mp3`;
     }
 
 
@@ -30,18 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.preload = "auto";
     audio.load();
 
-
     if (startMuted) {
         audio.muted = true;
     } else {
-        // En las demás escenas, intenta reproducir automáticamente
         audio.play().catch(() => console.warn("Autoplay bloqueado, esperará interacción."));
     }
 
 
     const btn = document.createElement("button");
     btn.textContent = startMuted ? "🔇" : "🔊";
-    btn.classList.add("sound-toggle");
     Object.assign(btn.style, {
         position: "fixed",
         bottom: "15px",
@@ -56,13 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
         color: "#fff",
     });
 
-
     btn.addEventListener("click", () => {
         if (audio.muted || audio.paused) {
             audio.muted = false;
             audio.play().then(() => {
                 btn.textContent = "🔊";
-                localStorage.setItem("soundEnabled", "true"); // guardar preferencia
+                localStorage.setItem("soundEnabled", "true");
             }).catch(() => console.warn("Reproducción bloqueada."));
         } else {
             audio.muted = true;
